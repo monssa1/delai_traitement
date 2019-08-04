@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+  layout:decorate="~{base}">
+<head>
+<title>PARAMETRES</title>
+</head>
+<body>
+<div layout:fragment="content" id="content">
+  
+ 
+ <div class="col-md-6 col-lg-5">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Enregistrement d'un Type de Dossier  </div>
+    <div class="panel-body">
+    	<form th:action="@{/addtype}" th:object="${typedossier}" method="POST">
+  <div class="form-group">
+    <label for="nomtype">Nom Type :</label>
+    <input type="text" class="form-control" id="" placeholder="Nom Type"  name="nomtype" th:value="${nomtype}" />
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+  <button type="reset" class="btn btn-warning">ANNULER</button>
+</form> 
+ 
+
+</div>
+    </div> 
+    </div>
+
+ <div class="col-md-6">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Liste des dossiers de pension</div>
+    <div class="panel-body">	
+    	<table class="table table-striped" > 
+    	<tr>
+    	<th>Nom</th><th>Action</th><th>Action</th>
+    	</tr>
+    	<tr th:each="t:${listetypes}">
+    	<td th:text="${t.nomtype}"></td>   	
+    	<td ><a  th:href="@{/modifiertype/(id=${t.id})}"  class="btn btn-primary " >Modifier</a></td>
+    	<td ><a class="btn btn-danger " th:href="@{/supprimertype/(id=${t.id})}">Supprimer</a></td>
+    	</tr>
+    	</table>
+     	<div class="container">
+    	<ul class="nav nav-pills">
+    	<li th:each="p,status:${pages}">
+    	<a th:href="@{/param(page=${status.index})}" th:text="${status.index}"></a>
+    	</li>
+    	</ul>
+    	</div>
+    	</div>
+    	</div>
+    	</div>
+</div>
+</body>
+</html>

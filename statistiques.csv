@@ -1,0 +1,17 @@
+Sy	 767 676/U 2018-04-01 2018-04-02 valider 	 Dossier valider
+SY	 987 654/F 2018-04-01 2018-04-02 valider 	 valider !!
+SY	 987 654/F 2018-03-28 2018-04-15 valider 	 test
+SY	 123 432/E 2018-04-26 2018-04-26 valider 	 test1 date ancien
+Diallo	 123 456/A 2018-03-02 2018-04-05 valider 	 date plus recente
+SY	 987 654/F 2018-04-03 2018-04-05 valider 	 testA
+dia	 132 888/R 2018-04-27 2018-04-28 valider 	 incomplet
+SY	 987 654/F 2018-04-04 2018-04-06 valider 	 tetd
+SY	 987 654/F 2018-04-04 2018-04-20 valider 	 etet
+
+SY	 123 432/E 2018-04-09 2018-04-17 valider 	 succes
+Diallo	 123 456/A 2018-04-09 2018-04-17 valider 	 succes
+SY	 987 654/F 2018-04-09 2018-04-17 valider 	 succes
+SY	 123 432/E 2018-04-10 2018-04-17 valider 	 test multiple
+Diallo	 123 456/A 2018-04-10 2018-04-17 valider 	 test multiple
+Sy	 767 676/U 2018-04-10 2018-04-17 valider 	 test multiple
+SY	 987 654/F 2018-04-13 2018-04-15 valider 	 aaaa

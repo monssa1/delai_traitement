@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+  layout:decorate="~{base}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Modification de Chef</title>
+</head>
+<body>
+<div layout:fragment="content" id="content">
+<div class="col-md-6 col-lg-6 col-lg-offset-3 ">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Modification de Chef </div>
+    <div class="panel-body">
+    	<form th:action="@{/modifchef/(id=${chef.id})}" th:object="${chef}" method="Post">
+   <div class="form-group">
+    <label for="nom">Nom  :</label>
+    <input type="text" class="form-control" id="" placeholder="Nom "  name="nom" th:value="${chef.nom}" />
+  </div>
+  <div class="form-group">
+    <label for="nomtype">Prenom :</label>
+    <input type="text" class="form-control" id="" placeholder="Prenom"  name="prenom" th:value="${chef.prenom}" />
+  </div>
+    <div class="form-group">
+    <label for="matricule">MATRICULE</label>
+    <input type="text" class="form-control" id="matricule1" name="matricule" th:value="${chef.matricule}" />
+  </div>
+  <div class="form-group">
+    <label for="nomDivision">Nom Division  :</label>
+    <input type="text" class="form-control" id="" placeholder="Nom Division"  name="nomDivision" th:value="${chef.nomDivision}" />
+  </div>
+   
+    <div class="form-group" >
+         <select class="form-control" id="bureau"  name="bureau" >
+             <option th:each="bureau: ${l_bureaux}"  th:value="${bureau.id}" 
+                 th:text="${bureau.nomBureau}"  >
+              </option>
+          </select>
+  </div>
+  <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+  <a th:href="@{/ch}" class="btn btn-warning">ANNULER</a>
+
+</form> 
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

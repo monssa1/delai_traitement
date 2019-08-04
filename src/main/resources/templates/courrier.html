@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+  layout:decorate="~{base}">
+<head>
+<title>PARAMETRES</title>
+</head>
+<body>
+<div layout:fragment="content" id="content">
+  
+ <div class="col-md-7 col-lg-12 col-lg-offset-3 ">
+ <div class="col-md-7">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Liste des dossiers reçus </div>
+    <div class="panel-body">	
+    	<table class="table table-striped" > 
+    	<tr>
+    	<th>Prenom</th><th>Nom</th><th>Matricule</th><th>Reçu le :</th><th>Status</th><th>Observation</th><th>Transmit par:</th>
+    	</tr>
+    	<tr th:each="s:${l_statistiques}">
+    	<td th:text="${s.dossierClient.prenom}"></td>
+    	<td th:text="${s.dossierClient.nom}"></td>
+    	<td th:text="${s.dossierClient.matricule}"></td>
+    	<td th:text="${s.dateTransmission}"></td>
+    	<td th:text="${s.status}"></td>
+    	<td th:text="${s.observation}"></td>
+    	<td th:text="${s.employe.prenom+' '+s.employe.nom}"></td>
+    	</tr>
+    	</table>
+    	<div class="container">
+    	<ul class="nav nav-pills">
+    	<li th:each="p,status:${pages}">
+    	<a th:href="@{/listedossier(page=${status.index})}" th:text="${status.index}"></a>
+    	</li>
+    	</ul>
+    	</div>
+    	</div>
+    	</div>
+    	</div>
+    	</div>
+
+   
+<div class="col-md-7 col-lg-12 col-lg-offset-3 ">
+ <div class="col-md-7">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Liste des dossiers envoyé</div>
+    <div class="panel-body">	
+    	<table class="table table-striped" > 
+    	<tr>
+    	<th>Prenom</th><th>Nom</th><th>Matricule</th><th>Envoyé le :</th><th>Status</th><th>Observation</th>
+    	</tr>
+    	<tr th:each="s:${l_t}">
+    	<td th:text="${s.dossierClient.prenom}"></td>
+    	<td th:text="${s.dossierClient.nom}"></td>
+    	<td th:text="${s.dossierClient.matricule}"></td>
+    	<td th:text="${s.dateTransmission}"></td>
+    	<td th:text="${s.status}"></td>
+    	<td th:text="${s.observation}"></td>
+    	</tr>
+    	</table>
+    	<div class="container">
+    	<ul class="nav nav-pills">
+    	<li th:each="p,status:${pagest}">
+    	<a th:href="@{/listedossier(page=${status.index})}" th:text="${status.index}"></a>
+    	</li>
+    	</ul>
+    	</div>
+    	</div>
+    	</div>
+    	</div>
+    	</div>
+
+   
+</div>
+</body>
+</html>

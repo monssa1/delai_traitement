@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+  layout:decorate="~{base}">
+<head>
+<title> GESTION DES CHEFS</title>
+</head>
+<body>
+<div layout:fragment="content" id="content">
+  <div class="col-md-6 col-lg-5">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Enregistrement de Chef </div>
+    <div class="panel-body">
+    	<form th:action="@{/addchef}" th:object="${chef}" method="POST">
+  <div class="form-group">
+    <label for="nom">Nom  :</label>
+    <input type="text" class="form-control" id="" placeholder="Nom "  name="nom" th:value="${nom}" />
+  </div>
+  <div class="form-group">
+    <label for="nomtype">Prenom :</label>
+    <input type="text" class="form-control" id="" placeholder="Prenom"  name="prenom" th:value="${prenom}" />
+  </div>
+    <div class="form-group">
+    <label for="matricule">MATRICULE</label>
+    <input type="text" class="form-control" id="matricule1" name="matricule" th:value="${matricule}" />
+  </div>
+  <div class="form-group">
+    <label for="nomDivision">Nom Division  :</label>
+    <input type="text" class="form-control" id="" placeholder="Nom Division"  name="nomDivision" th:value="${nomDivision}" />
+  </div>
+   
+    <div class="form-group" >
+         <select class="form-control" id="bureau"  name="bureau" >
+             <option th:each="bureau: ${l_bureaux}"  th:value="${bureau.id}" 
+                 th:text="${bureau.nomBureau}"  >
+              </option>
+          </select>
+  </div>
+  <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+  <button type="reset" class="btn btn-warning">ANNULER</button>
+</form > 
+</div>
+</div>
+</div>
+<div class="col-md-7">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Liste des Chefs </div>
+    <div class="panel-body">	
+    	<table class="table table-striped" > 
+    	<tr>
+    	<th>Nom</th><th>Prenom</th><th>Matricule</th><th>Nom Division</th><th>Bureau</th><th>Action</th><th>Action</th>
+    	</tr>
+    	<tr th:each="c:${listechefs}">
+    	<td th:text="${c.nom}"></td> 
+    	<td th:text="${c.prenom}"></td> 
+    	<td th:text="${c.matricule}"></td>
+    	<td th:text="${c.nomDivision}"></td>
+        <td th:text="${c.bureau.nomBureau}"></td>
+    	<td ><a th:href="@{/modifierchef/(id=${c.id})}"  class="btn btn-primary " >Modifier</a></td>
+    	<td ><a class="btn btn-danger " th:href="@{/supprimerchef/(id=${c.id})}">Supprimer</a></td>
+    	</tr>
+    	</table>
+     	<div class="container">
+    	<ul class="nav nav-pills">
+    	<li th:each="p,status:${pages}">
+    	<a th:href="@{/emp(page=${status.index})}" th:text="${status.index}"></a>
+    	</li>
+    	</ul>
+    	</div>
+    	</div>
+    	</div>
+    	</div>
+    	</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+  layout:decorate="~{base}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div layout:fragment="content" id="content">
+<div class="col-md-6 col-lg-6 col-lg-offset-3 ">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Enregistrer Dossier de pension </div>
+    <div class="panel-body">
+    	<form th:action="@{/addtyped/(id=${typedossier.id})}" th:object="${typedossier}" method="Post">
+  <div class="form-group" hidden="true">
+    <label for="matricule">ID</label>
+    <input type="text" class="form-control" id="id"  name="id"  th:value="${typedossier.id}" />
+  </div>  
+ <div class="form-group">
+    <label for="nom">NOM TYPE</label>
+    <input type="text" class="form-control" id="" placeholder="Nom Type"  name="nomtype" th:value="${typedossier.nomtype}"/>
+  </div>
+
+  <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+  <a th:href="@{/param}" class="btn btn-warning">ANNULER</a>
+
+</form> 
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

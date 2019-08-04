@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+  layout:decorate="~{base}">
+<head>
+<title>PARAMETRES</title>
+</head>
+<body>
+<div layout:fragment="content" id="content">
+  
+   <span style="color: red;" th:text="${message}"></span>
+ <div class="col-md-6 col-lg-5">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Enregistrement d'un Bureau </div>
+    <div class="panel-body">
+    	<form th:action="@{/addbureau}" th:object="${bureau}" method="POST">
+  <div class="form-group">
+    <label for="nomBureau">Nom Bureau :</label>
+    <input type="text" class="form-control" id="" placeholder="Nom Bureau"  name="nomBureau" th:value="${nomBureau}" />
+  </div>
+  <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+  <button type="reset" class="btn btn-warning">ANNULER</button>
+
+</form> 
+ 
+
+</div>
+    </div> 
+    </div>
+
+ <div class="col-md-6">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Liste des Bureaux</div>
+    <div class="panel-body">	
+    	<table class="table table-striped" > 
+    	<tr>
+    	<th>Nom Bureau</th><th>Action</th><th>Action</th>
+    	</tr>
+    	<tr th:each="t:${listebureaux}">
+    	<td th:text="${t.nomBureau}"></td>   	
+    	<td ><a  th:href="@{/modifierbureau/(id=${t.id})}"  class="btn btn-primary  " >Modifier</a></td>
+    	<td ><a class="btn btn-danger " th:href="@{/supprimerbureau/(id=${t.id})}">Supprimer</a></td>
+    	</tr>
+    	</table>
+     	<div class="container">
+    	<ul class="nav nav-pills">
+    	<li th:each="p,status:${pages}">
+    	<a th:href="@{/bur(page=${status.index})}" th:text="${status.index}"></a>
+    	</li>
+    	</ul>
+    	</div>
+    	</div>
+    	</div>
+    	</div>
+</div>
+</body>
+</html>

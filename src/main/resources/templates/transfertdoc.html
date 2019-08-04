@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+  layout:decorate="~{base}">
+<head>
+<title> test</title>
+</head>
+<body>
+<div layout:fragment="content" id="content">
+  <div class="col-md-6">
+   <div class="panel panel-primary">
+ 	<div class="panel-heading">Recherche de dossier </div>
+    <div class="panel-body">
+    <form th:action="@{/licrecherche1}" method="get">
+    <div>
+    <label>Recherche Matricule</label>
+    <input type="text" name="matricule"/>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+    </div>   
+    </form>
+    </div>
+    </div>
+    
+    <div class="panel panel-primary" th:if="${dossierclient}" >
+ 	<div class="panel-heading">Informations sur le dossier</div>
+    <div class="panel-body">
+    <div>
+    <label> Matricule :</label>
+    <label th:text="${dossierclient.matricule}"></label>
+    </div>
+     <div>
+    <label> NOM :</label>
+    <label th:text="${dossierclient.nom}"> </label>
+    </div>
+     <div>
+    <label> PRENOM :</label>
+    <label th:text="${dossierclient.prenom}"> </label>
+    </div>
+     <div>
+    <label> Date de Depot :</label>
+    <label th:text="${dossierclient.datedepot}"> </label>
+    </div>
+    </div>
+    </div>
+  </div> 
+  <div class="col-md-6">
+   <div class="panel panel-primary" th:if="${dossierclient}">
+ 	<div class="panel-heading"> Transmission du dossier</div>
+    <div class="panel-body">
+           <form method="post" th:action="@{/licadd1}" >
+                        <div class="form-group">
+                            <fieldset >
+                              <label for="disabledTextInput" ></label>
+                            <input type="hidden" th:value="${matricule}" class="form-control" name="matricule">
+                            <label for="disabledTextInput">Date Début</label>
+                            <input  class="form-control" type="date" name="dateReception" placeholder="YYYY-MM-JJ"/>
+ 
+                            </fieldset> <label class="control-label">Date Fin</label>
+                            <input class="form-control" type="date" name="dateTransmission" placeholder="YYYY-MM-JJ"/>
+                              <div class="form-group" >
+                                  <label for="prenom">Transmettre à :</label>
+                              <select class="form-control" id="chef"  name="chef" >
+                              <option th:each="chef: ${chefs}"  th:value="${chef.id}" 
+                                    th:text="${chef.prenom+' '+chef.nom}"  >
+                              </option>
+                              </select>
+                              </div>
+                            <label class="control-label">Status</label>
+                            <select id="status" name="status" class="form-control" >
+                            <option th:value="valider" >Valider</option>
+                            <option th:value="rejeter">Rejeter</option>
+                            </select>
+                            <div class="form-group">
+                            <label class="control-label" for="message">Observation </label>
+                           <textarea class="form-control" cols="40" id="observation" name="observation" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div>
+                            <input class="btn btn-success" type="submit" name="valider" value="Envoyer"/>
+                              <input class="btn btn-warning" type="submit" name="Annuler" value="Annuler"/>
+                        </div>
+                    </form>    
+ </div>
+ </div>
+ </div>
+ </div>
+</body>
+</html>

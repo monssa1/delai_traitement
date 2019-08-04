@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+  layout:decorate="~{base}">
+<head>
+<title> test</title>
+</head>
+<body>
+<div layout:fragment="content" id="content">
+  
+ <form th:action="@{/affichagestatistique}"  method="GET">
+   <div class="col-md-10 col-md-offset-1">
+   <div class="panel panel-primary" >
+ 	<div class="panel-heading">Recherche de dossiers par période</div>
+    <div class="panel-body">
+   
+     <div class="form-group col-md-3"  >
+     <label for="typedossier">Type dossiers :</label>
+         <select class="form-control" id="typedossier"  name="typedossier" >
+         <option   value="">Tous les types</option>
+             <option th:each="typedossier: ${l_typedocs}"  th:value="${typedossier.nomtype}" 
+                 th:text="${typedossier.nomtype}"  >
+              </option>
+          </select>
+  </div>
+    <div class="form-group col-md-3"  >
+                 <label for="disabledTextInput">Date de Reception</label>
+                 <input  class="form-control" type="date" name="dateReception" placeholder="YYYY-MM-JJ"/> 
+             </div>     
+              <div class="form-group col-md-3"  >                           
+                 <label class="control-label">Date de Transmission</label>
+                 <input class="form-control" type="date" name="dateTransmission" placeholder="YYYY-MM-JJ"/>
+                 </div>
+                  <div class="form-group col-md-3"  >
+                  <label class="control-label">Status</label>
+                            <select id="status" name="status" class="form-control" >
+                            <option th:value="valider" >Valider</option>
+                            <option th:value="rejeter">Rejeter</option>
+                            </select>
+                 </div>
+                 <div class="form-group col-xs-3 col-xs-offset-4">
+				<button type="submit" class="btn btn-block btn-primary">VALIDER</button>
+			</div>
+
+    </div>
+    </div>
+    </div>
+ </form>
+   
+<div class="col-md-6 col-lg-11 col-lg-offset-1 " >
+ <div class="col-md-11">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Liste des transmissions </div>
+    <div class="panel-body">	
+    	<table class="table table-striped" > 
+    	<tr>
+    	<th>Nom</th><th>MATRICULE</th><th>Date Reception</th><th>Date Transmission</th><th>Status</th><th>Observation</th><th>Employe</th>
+    	</tr>
+    	<tr th:each="s:${statistiques}">
+    	<td th:text="${s.dossierClient.nom}"></td>
+    	<td th:text="${s.dossierClient.matricule}"></td>
+    	<td th:text="${s.dateReception}"></td>
+    	<td th:text="${s.dateTransmission}"></td>
+    	<td th:text="${s.status}"></td>
+    	<td th:text="${s.observation}"></td>
+    	<td th:text="${s.employe.prenom+' '+s.employe.nom}"></td>
+    	</tr>
+    	</table>
+    	</div>
+    	</div>
+    	</div>
+    	</div>
+ </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+  layout:decorate="~{base}">
+<head>
+<!-- <script type="text/javascript" src="../static/js/main.js"
+th:href="@{js/main.js}"></script> -->
+<title> test</title>
+</head>
+<body>
+
+<div layout:fragment="content" id="content">
+  
+ <div class="col-md-7 col-lg-12 col-lg-offset-3 ">
+ <div class="col-md-7">
+ 	<div class="panel panel-primary">
+ 	<div class="panel-heading">Liste des dossiers de pensions</div>
+    <div class="panel-body">	
+    	<table class="table table-striped" > 
+    	<tr>
+    	<th>Nom</th><th>Prenom</th><th>Matricule</th><th>Numero depot</th><th>Type Dossier</th><th>Datedepot</th><th>Action</th>
+    	</tr>
+    	<tr th:each="o:${listedossiers}">
+    	<td th:text="${o.nom}"></td>
+    	<td th:text="${o.prenom}"></td>
+    	<td th:text="${o.matricule}"></td>
+    	<td th:text="${o.numerodepot}"></td>
+    	<td th:text="${o.typedossier.nomtype}"></td>
+    	<td th:text="${o.datedepot}"></td>
+    	<td ><a class="btn btn-primary " th:href="@{/modifierdossier/(matricule=${o.matricule})}" >Edit</a></td>
+    	</tr>
+    	</table>
+    	<div class="container">
+    	<ul class="nav nav-pills">
+    	<li th:each="p,status:${pages}">
+    	<a th:href="@{/listedossier(page=${status.index})}" th:text="${status.index}"></a>
+    	</li>
+    	</ul>
+    	</div>
+    	</div>
+    	</div>
+    	</div>
+    	</div>
+         
+ </div>
+</body>
+</html>

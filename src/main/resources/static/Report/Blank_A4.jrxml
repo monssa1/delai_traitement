@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4d29966-bd02-4f4c-8643-e2f73e8b8677">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="springboot_gtsprv2"/>
+	<queryString language="SQL">
+		<![CDATA[select * from t_transmission]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_transmission"/>
+	</field>
+	<field name="date_reception" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_reception"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_transmission"/>
+	</field>
+	<field name="date_transmission" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_transmission"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_transmission"/>
+	</field>
+	<field name="observation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="observation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_transmission"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_transmission"/>
+	</field>
+	<field name="chef_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="chef_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_transmission"/>
+	</field>
+	<field name="dossierclient_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="dossierclient_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_transmission"/>
+	</field>
+	<field name="employe_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="employe_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="t_transmission"/>
+	</field>
+	<sortField name="date_transmission"/>
+	<sortField name="observation"/>
+	<sortField name="employe_id"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="71" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="69" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="-71" width="181" height="140" uuid="ac371765-7f0a-4953-9bc4-0828e6cdbbdc"/>
+				<imageExpression><![CDATA["src/main/resources/static/images/Capture.PNG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="300" y="-68" width="244" height="118" uuid="7aefa815-56e5-491a-ab6b-31f36b40f288"/>
+				<text><![CDATA[N°	                      MEFP/DGB/DP
+
+Dakar, le                
+]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="91" y="40" width="100" height="30" uuid="3d0097ac-3f91-4aa0-b425-8f34a6ee1cb3"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="39" width="100" height="30" uuid="e970f752-4c91-400d-a816-d5fa5ec91e65"/>
+				<textFieldExpression><![CDATA[$F{date_reception}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="40" width="100" height="30" uuid="4ee98bed-0012-4d9c-86e6-caad6348c6c2"/>
+				<textFieldExpression><![CDATA[$F{observation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-8" y="39" width="100" height="30" uuid="eb5a565d-5826-4de2-be00-2b9f44591872"/>
+				<textFieldExpression><![CDATA[$F{dossierclient_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
